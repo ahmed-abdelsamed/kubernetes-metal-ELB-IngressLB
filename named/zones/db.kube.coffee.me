@@ -1,0 +1,40 @@
+$TTL    604800
+@       IN      SOA     bootstrap.coffee.me. contact.coffee.me (
+                  1     ; Serial
+             604800     ; Refresh
+              86400     ; Retry
+            2419200     ; Expire
+             604800     ; Minimum
+)
+        IN      NS      bootstrap
+
+bootstrap.coffee.me.          IN      A       192.168.6.200
+
+; Temp Bootstrap Node
+
+; Control Plane Nodes
+master1.kube.coffee.me.         IN      A      192.168.6.101
+master2.kube.coffee.me.         IN      A      192.168.6.102
+master3.kube.coffee.me.         IN      A      192.168.6.103
+
+; Worker Nodes
+worker1.kube.coffee.me.        IN      A      192.168.6.104
+worker2.kube.coffee.me.        IN      A      192.168.6.105
+
+; OpenShift Internal - Load balancer
+api.kube.coffee.me.        IN    A    192.168.6.200
+api-int.kube.coffee.me.    IN    A    192.168.6.200
+*.apps.kube.coffee.me.     IN    A    192.168.6.200
+
+; ETCD Cluster
+etcd-0.kube.coffee.me.    IN    A     192.168.6.101
+etcd-1.kube.coffee.me.    IN    A     192.168.6.102
+etcd-2.kube.coffee.me.    IN    A     192.168.6.103
+
+; OpenShift Internal SRV records (cluster name = kube)
+_etcd-server-ssl._tcp.kube.coffee.me.    86400     IN    SRV     0    10    2380    etcd-0.kube
+_etcd-server-ssl._tcp.kube.coffee.me.    86400     IN    SRV     0    10    2380    etcd-1.kube
+_etcd-server-ssl._tcp.kube.coffee.me.    86400     IN    SRV     0    10    2380    etcd-2.kube
+
+oauth-openshift.apps.kube.coffee.me.     IN     A     192.168.6.200
+console-openshift-console.apps.kube.coffee.me.     IN     A     192.168.6.200
