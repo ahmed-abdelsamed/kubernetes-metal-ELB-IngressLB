@@ -1,0 +1,21 @@
+$TTL    604800
+@       IN      SOA     bootstrap.coffee.me. contact.coffee.me (
+                  1     ; Serial
+             604800     ; Refresh
+              86400     ; Retry
+            2419200     ; Expire
+             604800     ; Minimum
+)
+
+  IN      NS      bootstrap.coffee.me.
+
+200      IN    PTR    bootstrap.coffee.me.
+200      IN    PTR    api.kube.coffee.me.
+200      IN    PTR    api-int.kube.coffee.me.
+;
+101    IN    PTR    master1.kube.coffee.me.
+102    IN    PTR    master2.kube.coffee.me.
+103    IN    PTR    master3.kube.coffee.me.
+;
+104    IN    PTR    worker1.kube.coffee.me.
+105    IN    PTR    worker2.kube.coffee.me.
